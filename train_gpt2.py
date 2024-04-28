@@ -361,7 +361,7 @@ if __name__ == "__main__":
         torch.set_float32_matmul_precision('high')
 
     # load the GPT-2 model weights
-    model = GPT.from_pretrained("gpt2")
+    model = GPT.from_pretrained("gpt2-medium")
     model.train()
     model.to(device)
     if args.compile:
@@ -410,8 +410,8 @@ if __name__ == "__main__":
         assert args.dtype == "float32", "right now can only write tensors in float32"
         logits, loss = model(x, y)
         loss.backward()
-        write_model(model, "gpt2_124M.bin")
-        write_state(model, x, y, logits, loss, "gpt2_124M_debug_state.bin")
+        write_model(model, "gpt2_350M.bin")
+        write_state(model, x, y, logits, loss, "gpt2_350M_debug_state.bin")
 
     use_fused = device == "cuda" # only works on CUDA (?)
     optimizer = torch.optim.Adam(model.parameters(), lr=1e-4, fused=use_fused)

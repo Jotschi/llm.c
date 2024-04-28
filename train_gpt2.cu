@@ -2260,7 +2260,7 @@ int main(int argc, char *argv[]) {
 
     // build the GPT-2 model from a checkpoint
     GPT2 model;
-    gpt2_build_from_checkpoint(&model, "gpt2_124M.bin");
+    gpt2_build_from_checkpoint(&model, "gpt2_350M.bin");
     printf("| max_sequence_length T | %-50d |\n", model.config.max_seq_len);
     printf("| vocab_size V          | %-50d |\n", model.config.vocab_size);
     printf("| num_layers L          | %-50d |\n", model.config.num_layers);
