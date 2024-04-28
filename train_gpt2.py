@@ -371,12 +371,13 @@ if __name__ == "__main__":
         model = torch.compile(model)
 
     # load the tokens
-    # prefer to use tiny_shakespeare if it's available, otherwise use tiny_stories
+    # prefer to use kleiner-astronaut if it's available, otherwise use tiny_stories
     # we're using val instead of train split just because it is smaller/faster
+    astro_tokens_bin = "data/kleiner-astronaut_val.bin"
     shake_tokens_bin = "data/tiny_shakespeare_val.bin"
     story_tokens_bin = "data/TinyStories_val.bin"
-    assert os.path.isfile(shake_tokens_bin) or os.path.isfile(story_tokens_bin), "you must run prepro on some dataset"
-    tokens_bin = shake_tokens_bin if os.path.isfile(shake_tokens_bin) else story_tokens_bin
+    assert os.path.isfile(astro_tokens_bin) or os.path.isfile(shake_tokens_bin) or os.path.isfile(story_tokens_bin), "you must run prepro on some dataset"
+    tokens_bin = astro_tokens_bin if os.path.isfile(astro_tokens_bin) else story_tokens_bin
     assert os.path.isfile(tokens_bin)
     print(f"loading cached tokens in {tokens_bin}")
     with open(tokens_bin, "rb") as f:
