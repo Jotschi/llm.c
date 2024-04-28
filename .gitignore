@@ -22,3 +22,6 @@ dev/cuda/matmul_backward_bias
 
 # log files
 *.log
+
+# python venv
+venv
